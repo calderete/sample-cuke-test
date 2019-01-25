@@ -4,14 +4,16 @@ Given(/^A vistor navigates to leadership team member information$/) do
 end
 
 When(/^They copy the leadership team member info$/) do
-  name = @mail_chimp_ui.browser.elements(css: '[class^=\'h5\']')
-  title = @mail_chimp_ui.browser.elements(css: '[class^=\'copy\']')
-  bio = @mail_chimp_ui.browser.elements(css: '[class^=\'normalize\']')
+  @names = @mail_chimp_ui.browser.elements(css: '[class^=\'h5\']')
+  @titles = @mail_chimp_ui.browser.elements(css: '[class^=\'copy\']')
+  @bios = @mail_chimp_ui.browser.elements(css: '[class^=\'normalize\']')
+end
 
-  CSV.new("#{Dir.pwd}/test_files/ltm_csv.csv")
-  CSV.open("#{Dir.pwd}/test_files/ltm_csv.csv", "w") do |wr|
+Then(/^It can be saved in a csv file and viewed as a spreadsheet$/) do
+  CSV.new(@file_path)
+  CSV.open(@file_path, "w") do |wr|
     wr << ["Name", "Title", "Bio"]
-    name.each_with_index { |name,index| wr << [name.text, title[index].text, bio[index].text] }
+    @names.each_with_index { |name,index| wr << [name.text, @titles[index].text, @bios[index].text] }
   end
-
+  binding.pry
 end

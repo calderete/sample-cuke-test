@@ -5,7 +5,7 @@ Before("@team-member-scenario") do
 end
 
 Before("@test-csv") do
-  @path = "#{Dir.pwd}/test_files/test_csv.csv"
+  @file_path = "#{Dir.pwd}/test_files/test_csv.csv"
 end
 
 After("@team-member-scenario") do
@@ -13,5 +13,5 @@ After("@team-member-scenario") do
 end
 
 After("@test-csv") do
-  File.delete(@path)
+  File.delete(@file_path)
 end
