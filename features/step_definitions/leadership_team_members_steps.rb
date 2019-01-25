@@ -15,5 +15,4 @@ Then(/^It can be saved in a csv file and viewed as a spreadsheet$/) do
     wr << ["Name", "Title", "Bio"]
     @names.each_with_index { |name,index| wr << [name.text, @titles[index].text, @bios[index].text] }
   end
-  binding.pry
 end
