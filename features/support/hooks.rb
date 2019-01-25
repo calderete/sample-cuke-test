@@ -1,7 +1,7 @@
 Before("@team-member-scenario") do
-  @url = "https://mailchimp.com"
+  url = "https://mailchimp.com"
   @mail_chimp_ui = Watir::Browser.new(:firefox)
-  @mail_chimp_ui.goto(@url)
+  @mail_chimp_ui.goto(url)
 end
 
 Before("@test-csv") do
@@ -12,6 +12,6 @@ After("@team-member-scenario") do
   @mail_chimp_ui.browser.close
 end
 
-After("@test-csv") do
-  File.delete(@file_path)
-end
+# After("@test-csv") do
+#   File.delete(@file_path)
+# end
